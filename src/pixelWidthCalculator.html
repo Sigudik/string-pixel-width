@@ -10,23 +10,8 @@
 
     <script>
       var websafe = [
-        'Andale Mono',
-        'Arial',
-        'Avenir',
-        'Avenir Next',
-        'Comic Sans MS',
-        'Courier New',
-        'Georgia',
-        'Helvetica',
-        'Impact',
-        'Times New Roman',
-        'Trebuchet MS',
-        'Verdana',
-        'Webdings',
-        'Open Sans',
-        'Tahoma',
-        'Quantify'
-      ]
+        'Helvetica'
+      ];
 
       function checkFont(name) {
         var h1 = document.getElementById('h1');
@@ -36,14 +21,15 @@
 
         var widths = {};
         var sandbox = document.getElementsByClassName('sandbox')[0];
-        for (var i = 0; i <= 127; i++) {
+        for (var i = 0; i <= 1105; i++) {
           if (i < 32) continue; // non-printable chars
-          if (i === 127) continue; // DELETE char
+          if (i > 126 && i < 1040) continue; // Non Latin/Non Russian letters
           var letter = String.fromCharCode(i);
           var printableLetter = (letter);
           if (printableLetter === ' ') {
             printableLetter = '&nbsp';
           }
+          console.log(letter);
           widths[letter] = [
               getWidthOf(sandbox, printableLetter, name, 'normal', 'normal'),
               getWidthOf(sandbox, printableLetter, name, 'bold', 'normal'),
